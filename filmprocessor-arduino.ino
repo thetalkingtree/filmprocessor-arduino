@@ -181,37 +181,5 @@ void setup()
 // *********************************************************************
 void loop()
 {
-  LCDML.loop();
-  //float c = checkTemperatured();
-}
-
-
-float checkTemperatured()
-{
-   for (int x = 0; x < 256; x++) { // 255 analogue readings for averaging
-    total = total + analogRead(tempPin); // add each value
-  }
-
-  //unsigned long average = total /257; //Slight temp calibration
-  unsigned long average = total * 0.00389105;
-  tempReading = average;
- 
-  Serial.print("Temp reading = ");
-  Serial.print(tempReading);     // the raw analog reading
- 
-  // converting that reading to voltage, which is based off the reference voltage
-  float voltage = tempReading * aref_voltage;
-  voltage /= 1024.0; 
- 
-  // print out the voltage
-  Serial.print(" - ");
-  Serial.print(voltage); Serial.println(" volts");
- 
-  // now print out the temperature
-  float temperatureC = (voltage - 0.5) * 100 ;  //converting from 10 mv per degree wit 500 mV offset
-                                               //to degrees ((volatge - 500mV) times 100)
-  Serial.print(temperatureC + 1.56); 
-  Serial.println(" degrees C");   
-  total = 0;
-  return temperatureC + 1.56;
+  LCDML.loop(); 
 }
