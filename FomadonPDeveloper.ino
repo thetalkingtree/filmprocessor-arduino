@@ -46,7 +46,7 @@
             return devTime + (devTime * getTimeCompensationPercentage()/100);
         }
 
-        if(filmCode == "Fomapan200")
+        if(filmCode == "Fomapan400")
         {
             //10:30 minutes            
             long devTime = 630000 * getDevTimeMultiplicator();
