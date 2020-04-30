@@ -1,6 +1,6 @@
 # [Semi-automatic film processor](https://github.com/thetalkingtree/filmprocessor-arduino)
 
-Photographers, who are developing film manually, this machine can save some processing time.
+For photographers, who are developing film manually, this machine can save some processing time.
 This repo contains the code and schematics for a semi-automated photographic film processor. In this stage of development the processor supports the B&W dev process tested with Foma based films and chemicals. By extending the code it is possible to use any type of film and development process, even Caffenol.
 
 ###### Main features : 
