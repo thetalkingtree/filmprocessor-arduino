@@ -29,6 +29,9 @@ FomadonDeveloper *FomadonDeveloper::Create(int type)
         return NULL;
 }
 
+/*
+* Interpolate the dev time for a unlisted temperature in the film, or developer technical sheets
+*/
 void FomadonDeveloper::InterpolateCorrection(float temperature)
 {
     //TODO: Implememt validation handling

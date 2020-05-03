@@ -1,6 +1,9 @@
   #include "Film.h"
   
-
+/*
+ * This is the Film object class
+ * Contains only getters and setters
+*/
 Film::Film()
 {
 

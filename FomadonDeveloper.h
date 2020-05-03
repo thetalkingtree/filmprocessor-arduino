@@ -6,22 +6,23 @@ class FomadonDeveloper {
     
   private:
     Film _film;   
-    float _temperature = 1.0;                    //get auto
-    float devTimeMultiplicator = 1.0;     //get
+    float _temperature = 1.0; //If set to 1, the the temp is et to auto mode and is measured by a temp sensor
+    float devTimeMultiplicator = 1.0; //Depends on configuration from the display menu
     
    
-    long developmentTime;                //get
-    long agitationInitialSeconds = 31;  //get
-    long agitationSeconds = 10; //get
-    int  agitationIntervalSeconds = 60; //get
+    long developmentTime; //Depends on configuration from the display menu                
+    long agitationInitialSeconds = 31;  //From the Foma technical sheets
+    long agitationSeconds = 10; ////From the Foma technical sheets
+    int  agitationIntervalSeconds = 60; ////From the Foma technical sheets
 
-    long totalTime; //get
+    long totalTime; //Depends on configuration from the display menu
     bool agitate = false;
   
   protected:
-    String developerName;                  //get   
+    String developerName;  //Depends on configuration from the display menu   
+    //Find the development time for an unlisted temperature in the technical sheets
     void InterpolateCorrection(float temperature); 
-     int timeCompensationPercentage = 0;    //get set
+     int timeCompensationPercentage = 0; //Depends on configuration from the display menu   
 
   public:    
     FomadonDeveloper();

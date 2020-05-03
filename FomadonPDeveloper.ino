@@ -1,16 +1,12 @@
 #include "FomadonPDeveloper.h"
-    
-    FomadonPDeveloper::FomadonPDeveloper()
-    {
-        developerName = "Fomadon P (D76)";
+        
+    FomadonPDeveloper::FomadonPDeveloper(){        
     }
     
-    FomadonPDeveloper::FomadonPDeveloper(Film *film) : FomadonDeveloper(film){        
-        developerName = "Fomadon P (D76)";
+    FomadonPDeveloper::FomadonPDeveloper(Film *film) : FomadonDeveloper(film){                
     };
 
-    FomadonPDeveloper::FomadonPDeveloper(Film *film, float temperature) : FomadonDeveloper(film, temperature){        
-        developerName = "Fomadon P (D76)";
+    FomadonPDeveloper::FomadonPDeveloper(Film *film, float temperature) : FomadonDeveloper(film, temperature){                
     };
 
     String FomadonPDeveloper::getDeveloperName()
@@ -23,11 +19,18 @@
         return timeCompensationPercentage;
     }
 
+    //TODO: Implement total processing time
     long FomadonPDeveloper::getTotalTime()
     {
         return 0;
     }
     
+    /*
+    *These values are from the foma technical sheet and if operating in auto mode, the 
+    *temperature is measured wtih a temp sensor.
+    *The tempereature is corrected by various parameters set on the display menu. (Push/pull...etc)
+    */
+     
     long FomadonPDeveloper::getDevelopmentTime()
     {
         String filmCode = FomadonPDeveloper::getFilm().getFilmCode();

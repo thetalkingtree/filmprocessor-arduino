@@ -4,6 +4,7 @@ bool g_isAgitationStopped = false;
 long g_agitationTime = 0;
 bool g_isPresoak = true;
 
+//The selected film from the display menu
 void mFunc_param_film(uint8_t param)
 // *********************************************************************
 {
@@ -13,8 +14,7 @@ void mFunc_param_film(uint8_t param)
   }
 
   if (LCDML.FUNC_loop()) // ****** LOOP *********
-  {
-    // For example
+  {    
     switch (param)
     {
     case 1:
@@ -47,6 +47,7 @@ void mFunc_param_film(uint8_t param)
   }
 }
 
+//The selected developer from the display menu
 void mFunc_param_developer(uint8_t param)
 // *********************************************************************
 {
@@ -87,6 +88,7 @@ void mFunc_param_developer(uint8_t param)
   }
 }
 
+//The selected temperature from the display menu
 void mFunc_param_temperature(uint8_t param)
 // *********************************************************************
 {
@@ -107,6 +109,7 @@ void mFunc_param_temperature(uint8_t param)
   }
 }
 
+//The selected time compensation from the display menu
 void mFunc_param_compensation(uint8_t param)
 // *********************************************************************
 {
@@ -127,6 +130,7 @@ void mFunc_param_compensation(uint8_t param)
   }
 }
 
+//Confirm parameter setup, wait to confirm development start
 // *********************************************************************
 void mFunc_confirm_dev_setup(uint8_t param)
 // *********************************************************************
@@ -176,6 +180,7 @@ void mFunc_confirm_dev_setup(uint8_t param)
   }
 }
 
+//The presoak process
 void mFunc_presoak(uint8_t param)
 {
   if (LCDML.FUNC_setup()) // ****** SETUP *********
@@ -234,6 +239,7 @@ void mFunc_presoak(uint8_t param)
   }
 }
 
+//The develop process
 void mFunc_develop(uint8_t param)
 // *********************************************************************
 {
@@ -293,6 +299,7 @@ void mFunc_develop(uint8_t param)
   }
 }
 
+//The fixing process
 void mFunc_fix(uint8_t param)
 // *********************************************************************
 {
@@ -425,6 +432,7 @@ void stopAgitate()
   g_isAgitationStopped = true;
 }
 
+//Agitate
 void checkAgitate()
 {
   //Inital agitation not executed yet

@@ -58,10 +58,14 @@ void lcdml_menu_control();
 #define motorPin3  48 // IN3 on the ULN2003 driver
 #define motorPin4  46 // IN4 on the ULN2003 driver
 
+//Motor type interface for the accel stepper lib
 #define MotorInterfaceType 4
 
+//Global variable, for the seelcted film
 Film gFilm;
+//Global variable for the selected developer
 FomadonDeveloper *gFilmDeveloper;
+//Initialize the stepper
 AccelStepper stepper = AccelStepper(MotorInterfaceType, motorPin4, motorPin2, motorPin3, motorPin1);
 
 // *********************************************************************
