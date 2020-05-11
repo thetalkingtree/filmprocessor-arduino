@@ -137,7 +137,7 @@ void mFunc_confirm_dev_setup(uint8_t param)
 {
   if (LCDML.FUNC_setup()) // ****** SETUP *********
   {
-    LCDML.FUNC_setLoopInterval(100); // starts a trigger event for the loop function every 100 milliseconds
+    LCDML.FUNC_setLoopInterval(500); // starts a trigger event for the loop function every 100 milliseconds
 
     lcd.setCursor(0, 0); // set LCD cursor pos
     lcd.print(gFilmDeveloper->getFilm().getFilmCode());
@@ -393,7 +393,7 @@ void printTimeFromSec(int allSeconds, int lcdCol, int lcdRow)
 
 float checkTemperature()
 {
-  const byte numReadings = 64; // number of readings for smoothing (max 64)
+  const byte numReadings = 32; // number of readings for smoothing (max 64)
   int readings[numReadings]; // readings from the analogue input
   byte index = 0; // index of the current reading
   unsigned int total = 0; // running total
@@ -416,13 +416,13 @@ float checkTemperature()
   tempC = total * aref_voltage * 0.1 / numReadings - 50.0; // value to celcius conversion for TMP36
   
   // print to serial monitor
-  Serial.print("Raw average = ");
+  Serial.println("Raw average = ");
   Serial.print(total / numReadings);
   if (total == 1023 * numReadings) {
     Serial.println("  ----too hot----");
   }
   else {
-    Serial.print("   The temperature is  ");
+    Serial.println ("   The temperature is  ");
     Serial.print(tempC, 2);
     Serial.print(" Celcius  ");   
   }
@@ -486,8 +486,7 @@ void printDevelopTemperature()
     lcd.setCursor(0, 2);
     lcd.print(F("Dev. temp. :"));
     lcd.setCursor(13, 2);
-    lcd.print(gFilmDeveloper->getTemperature(),1);
-    //lcd.print();
+    lcd.print(gFilmDeveloper->getTemperature());    
     lcd.setCursor(18, 2);
     lcd.print(F("C"));
 }

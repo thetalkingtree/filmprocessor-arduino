@@ -12,7 +12,9 @@
 //*********************************************************************
 //Temp sensor settings
 //*********************************************************************
-#define aref_voltage 1.0565 // we tie 1.1V to ARef and measure it with a multimeter!
+#define aref_voltage 1.0518 // we tie 1.1V to ARef and measure it with a multimeter!
+
+
 //TMP36 Pin Variables
 int tempPin = A2; //the analog pin the TMP36's Vout (sense) pin is connected to   
 float tempC; // Celsius             
@@ -151,6 +153,7 @@ void setup()
   // serial init; only be needed if serial control is used
   Serial.begin(9600);                // start serial
   analogReference(INTERNAL1V1);
+  
   Serial.println(F("Semi auto film processor")); 
   
   stepper.setMaxSpeed(500);
