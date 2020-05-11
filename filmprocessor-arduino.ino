@@ -12,7 +12,7 @@
 //*********************************************************************
 //Temp sensor settings
 //*********************************************************************
-#define aref_voltage 1.0567 // we tie 1.1V to ARef and measure it with a multimeter!
+#define aref_voltage 1.0565 // we tie 1.1V to ARef and measure it with a multimeter!
 //TMP36 Pin Variables
 int tempPin = A2; //the analog pin the TMP36's Vout (sense) pin is connected to   
 float tempC; // Celsius             
