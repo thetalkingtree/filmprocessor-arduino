@@ -12,14 +12,10 @@
 //*********************************************************************
 //Temp sensor settings
 //*********************************************************************
- #define aref_voltage 3.31  // we tie 3.3V to ARef and measure it with a multimeter!
-
+#define aref_voltage 1.0567 // we tie 1.1V to ARef and measure it with a multimeter!
 //TMP36 Pin Variables
-int tempPin = A2; //the analog pin the TMP36's Vout (sense) pin is connected to
-                  //the resolution is 10 mV / degree centigrade with a
-                  //500 mV offset to allow for negative temperatures
-int tempReading;  // the analog reading from the sensor
-unsigned int total = 0; // A/D readings
+int tempPin = A2; //the analog pin the TMP36's Vout (sense) pin is connected to   
+float tempC; // Celsius             
 
 // *********************************************************************
 // LCDML display settings
@@ -154,7 +150,7 @@ void setup()
 {
   // serial init; only be needed if serial control is used
   Serial.begin(9600);                // start serial
-  analogReference(EXTERNAL);
+  analogReference(INTERNAL1V1);
   Serial.println(F("Semi auto film processor")); 
   
   stepper.setMaxSpeed(500);

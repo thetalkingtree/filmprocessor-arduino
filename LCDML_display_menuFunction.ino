@@ -160,8 +160,8 @@ void mFunc_confirm_dev_setup(uint8_t param)
     //Temp is set to auto, so measure and display continuously
     if (gFilmDeveloper->getTemperature() == 1)
     {
-      lcd.setCursor(13, 2);
-      lcd.print(checkTemperature());
+      lcd.setCursor(13, 2);      
+      lcd.print(checkTemperature(), 1);
     }
 
     if (LCDML.BT_checkEnter())
@@ -393,33 +393,41 @@ void printTimeFromSec(int allSeconds, int lcdCol, int lcdRow)
 
 float checkTemperature()
 {
-   for (int x = 0; x < 256; x++) { // 255(max) analogue readings for averaging
-    total = total + analogRead(tempPin); // add each value
+  const byte numReadings = 64; // number of readings for smoothing (max 64)
+  int readings[numReadings]; // readings from the analogue input
+  byte index = 0; // index of the current reading
+  unsigned int total = 0; // running total
+
+  for (index = 0; index < numReadings; index++) { // fill the array for faster startup
+    readings[index] = analogRead(tempPin);
+    total = total + readings[index];
   }
 
-  //unsigned long average = total /257; //Slight temp calibration
-  unsigned long average = total * 0.00389105;
-  tempReading = average;
- 
-  Serial.print("Temp reading = ");
-  Serial.print(tempReading);     // the raw analog reading
- 
-  // convert that reading to voltage, which is based off the reference voltage
-  float voltage = tempReading * aref_voltage;
-  voltage /= 1024.0; 
- 
-  // print out the voltage
-  Serial.print(" - ");
-  Serial.print(voltage); Serial.println(" volts");
- 
-  // now print out the temperature
-  float temperatureC = (voltage - 0.5) * 100 ;  //converting from 10 mv per degree wit 500 mV offset
-                                               //to degrees ((volatge - 500mV) times 100)
-  Serial.print(temperatureC + 1.56); 
-  Serial.println(" degrees C");   
-  total = 0;
-  return temperatureC + 1.56;
+  index = 0; // reset
 
+  total = total - readings[index]; // subtract the last reading
+  readings[index] = analogRead(tempPin); // one unused reading to clear ghost charge
+  readings[index] = analogRead(tempPin); // read from the sensor
+  total = total + readings[index]; // add the reading to the total
+  index = index + 1; // advance to the next position in the array
+  if (index >= numReadings) // if we're at the end of the array
+    index = 0; // wrap around to the beginning
+
+  tempC = total * aref_voltage * 0.1 / numReadings - 50.0; // value to celcius conversion for TMP36
+  
+  // print to serial monitor
+  Serial.print("Raw average = ");
+  Serial.print(total / numReadings);
+  if (total == 1023 * numReadings) {
+    Serial.println("  ----too hot----");
+  }
+  else {
+    Serial.print("   The temperature is  ");
+    Serial.print(tempC, 2);
+    Serial.print(" Celcius  ");   
+  }
+  
+  return tempC;
 }
 
 void stopAgitate()
@@ -474,11 +482,12 @@ void developmentFinished()
 }
 
 void printDevelopTemperature()
-{
+{  
     lcd.setCursor(0, 2);
     lcd.print(F("Dev. temp. :"));
     lcd.setCursor(13, 2);
-    lcd.print(gFilmDeveloper->getTemperature());
+    lcd.print(gFilmDeveloper->getTemperature(),1);
+    //lcd.print();
     lcd.setCursor(18, 2);
     lcd.print(F("C"));
 }
