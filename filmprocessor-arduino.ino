@@ -7,7 +7,6 @@
 #include <LCDMenuLib2.h>
 #include "FomadonPDeveloper.h"
 #include <AccelStepper.h>
-#include <MultiStepper.h>
 
 //*********************************************************************
 //Temp sensor settings
