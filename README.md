@@ -22,7 +22,7 @@ Feel free to extend,  modify etc. this project.
 **Schematics**
 ![Schematics](/Fritzing/semiauto-film-developer_bb.png)
 
-**Secoind prototype**
+**Second prototype**
 ![Prototype2](/Fritzing/img1.jpg)
 ![Prototype2](/Fritzing/img2.jpg)
 
