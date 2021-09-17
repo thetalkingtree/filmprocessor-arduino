@@ -413,12 +413,12 @@ void lcdml_menu_control(void)
       // in this switch case you have to change the value 0x...1 to the correct IR code
       switch (results.value)
       {
-          case 0x9C7A0CED: LCDML.BT_enter(); break;
-          case 0x7685491B: LCDML.BT_up();    break;
-          case 0x86318DCC: LCDML.BT_down();  break;
-          case 0x00000004: LCDML.BT_left();  break;
-          case 0x00000005: LCDML.BT_right(); break;
-          case 0x6B670AB8: LCDML.BT_quit();  break;
+          case 0x40D00414: LCDML.BT_enter(); break;
+          case 0x40D00A1A: LCDML.BT_up();    break;
+          case 0x40D00616: LCDML.BT_down();  break;
+          case 0x40D00E1E: LCDML.BT_left();  break;
+          case 0x40D00111: LCDML.BT_right(); break;
+          case 0x40D808A0: LCDML.BT_quit();  break;
           default: break;
       }
       irrecv.resume(); // Receive the next value
