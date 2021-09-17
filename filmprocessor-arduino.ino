@@ -7,6 +7,8 @@
 #include <LCDMenuLib2.h>
 #include "FomadonPDeveloper.h"
 #include <AccelStepper.h>
+#include "LCDML_display_menuFunction.h"
+
 
 //*********************************************************************
 //Temp sensor settings
@@ -16,7 +18,8 @@
 
 //TMP36 Pin Variables
 int tempPin = A2; //the analog pin the TMP36's Vout (sense) pin is connected to   
-float tempC; // Celsius             
+float tempC; // Celsius          
+
 
 // *********************************************************************
 // LCDML display settings
@@ -58,12 +61,13 @@ void lcdml_menu_control();
 //Motor type interface for the accel stepper lib
 #define MotorInterfaceType 4
 
-//Global variable, for the seelcted film
+//Global variable, for the selected film
 Film gFilm;
 //Global variable for the selected developer
 FomadonDeveloper *gFilmDeveloper;
 //Initialize the stepper
 AccelStepper stepper = AccelStepper(MotorInterfaceType, motorPin4, motorPin2, motorPin3, motorPin1);
+
 
 // *********************************************************************
 // Program menu

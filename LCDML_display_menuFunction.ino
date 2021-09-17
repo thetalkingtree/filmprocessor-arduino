@@ -1,8 +1,16 @@
+#include "FomadonDeveloper.h"
+#include <AccelStepper.h>
+
 long g_func_timer_info = 0;  // time counter (global variable)
 unsigned long g_timer_1 = 0; // timer variable (global variable)
 bool g_isAgitationStopped = false;
 long g_agitationTime = 0;
 bool g_isPresoak = true;
+extern Film gFilm;
+extern FomadonDeveloper *gFilmDeveloper;
+extern AccelStepper stepper;
+extern int tempPin;
+extern float tempC;
 
 //The selected film from the display menu
 void mFunc_param_film(uint8_t param)
