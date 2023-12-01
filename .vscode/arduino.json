@@ -1,7 +1,8 @@
 {
     "board": "arduino:avr:mega",
     "configuration": "cpu=atmega2560",
-    "port": "COM5",
+    "port": "COM3",
     "sketch": "filmprocessor-arduino.ino",
-    "output": "../build"
+    "output": "../build",
+    "programmer": "arduinoisp"
 }

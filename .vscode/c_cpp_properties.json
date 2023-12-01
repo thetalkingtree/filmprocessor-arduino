@@ -2,37 +2,8 @@
     "version": 4,
     "configurations": [
         {
-            "name": "Win32",
-            "compilerPath": "C:/Program Files (x86)/Arduino/hardware/tools/avr/bin/avr-gcc.exe",
-            "compilerArgs": [],
-            "intelliSenseMode": "gcc-x64",
-            "includePath": [
-                "C:\\Program Files (x86)\\Arduino\\libraries\\Stepper\\src",
-                "c:\\Program Files (x86)\\Arduino\\tools\\**",
-                "c:\\Program Files (x86)\\Arduino\\hardware\\arduino\\avr\\**",
-                "c:\\Program Files (x86)\\Arduino\\hardware\\tools\\avr\\avr\\**",
-                "C:\\Program Files (x86)\\Arduino\\tools\\**",
-                "C:\\Program Files (x86)\\Arduino\\hardware\\arduino\\avr\\**",
-                "C:\\Users\\attil\\Documents\\Arduino\\libraries\\**",
-                "${workspaceFolder}/**",
-                "C:\\Users\\attil\\Documents\\Arduino\\libraries\\AccelStepper\\src"
-            ],
-            "forcedInclude": [
-                "C:\\Program Files (x86)\\Arduino\\hardware\\arduino\\avr\\cores\\arduino\\Arduino.h"
-            ],
-            "cStandard": "c11",
-            "cppStandard": "c++17",
-            "defines": [
-                "_DEBUG",
-                "UNICODE",
-                "_UNICODE",
-                "USBCON",
-                "ARDUINO=10813"
-            ]
-        },
-        {
             "name": "Arduino",
-            "compilerPath": "C:\\Program Files (x86)\\Arduino\\hardware\\tools\\avr\\bin\\avr-g++",
+            "compilerPath": "C:\\Users\\attil\\AppData\\Local\\Arduino15\\packages\\arduino\\tools\\avr-gcc\\7.3.0-atmel3.6.1-arduino7\\bin\\avr-g++",
             "compilerArgs": [
                 "-w",
                 "-std=gnu++11",
@@ -45,25 +16,25 @@
             ],
             "intelliSenseMode": "gcc-x64",
             "includePath": [
-                "C:\\Program Files (x86)\\Arduino\\hardware\\arduino\\avr\\cores\\arduino",
-                "C:\\Program Files (x86)\\Arduino\\hardware\\arduino\\avr\\variants\\mega",
-                "C:\\Program Files (x86)\\Arduino\\hardware\\arduino\\avr\\libraries\\Wire\\src",
+                "C:\\Users\\attil\\AppData\\Local\\Arduino15\\packages\\arduino\\hardware\\avr\\1.8.6\\cores\\arduino",
+                "C:\\Users\\attil\\AppData\\Local\\Arduino15\\packages\\arduino\\hardware\\avr\\1.8.6\\variants\\mega",
+                "C:\\Users\\attil\\AppData\\Local\\Arduino15\\packages\\arduino\\hardware\\avr\\1.8.6\\libraries\\Wire\\src",
                 "C:\\Users\\attil\\Documents\\Arduino\\libraries\\LiquidCrystal_I2C",
                 "C:\\Users\\attil\\Documents\\Arduino\\libraries\\LCDMenuLib2\\src",
                 "C:\\Users\\attil\\Documents\\Arduino\\libraries\\AccelStepper\\src",
                 "C:\\Users\\attil\\Documents\\Arduino\\libraries\\IRremote\\src",
-                "c:\\program files (x86)\\arduino\\hardware\\tools\\avr\\lib\\gcc\\avr\\7.3.0\\include",
-                "c:\\program files (x86)\\arduino\\hardware\\tools\\avr\\lib\\gcc\\avr\\7.3.0\\include-fixed",
-                "c:\\program files (x86)\\arduino\\hardware\\tools\\avr\\avr\\include"
+                "c:\\users\\attil\\appdata\\local\\arduino15\\packages\\arduino\\tools\\avr-gcc\\7.3.0-atmel3.6.1-arduino7\\lib\\gcc\\avr\\7.3.0\\include",
+                "c:\\users\\attil\\appdata\\local\\arduino15\\packages\\arduino\\tools\\avr-gcc\\7.3.0-atmel3.6.1-arduino7\\lib\\gcc\\avr\\7.3.0\\include-fixed",
+                "c:\\users\\attil\\appdata\\local\\arduino15\\packages\\arduino\\tools\\avr-gcc\\7.3.0-atmel3.6.1-arduino7\\avr\\include"
             ],
             "forcedInclude": [
-                "C:\\Program Files (x86)\\Arduino\\hardware\\arduino\\avr\\cores\\arduino\\Arduino.h"
+                "C:\\Users\\attil\\AppData\\Local\\Arduino15\\packages\\arduino\\hardware\\avr\\1.8.6\\cores\\arduino\\Arduino.h"
             ],
             "cStandard": "c11",
             "cppStandard": "c++11",
             "defines": [
                 "F_CPU=16000000L",
-                "ARDUINO=10813",
+                "ARDUINO=10607",
                 "ARDUINO_AVR_MEGA2560",
                 "ARDUINO_ARCH_AVR",
                 "__DBL_MIN_EXP__=(-125)",

@@ -408,17 +408,17 @@ void lcdml_menu_control(void)
   if (irrecv.decode(&results))
   {
       // comment this line out, to check the correct code
-      //Serial.println(results.value, HEX);
+      Serial.println(results.value, HEX);
 
       // in this switch case you have to change the value 0x...1 to the correct IR code
       switch (results.value)
       {
-          case 0x40D00414: LCDML.BT_enter(); break;
-          case 0x40D00A1A: LCDML.BT_up();    break;
-          case 0x40D00616: LCDML.BT_down();  break;
-          case 0x40D00E1E: LCDML.BT_left();  break;
-          case 0x40D00111: LCDML.BT_right(); break;
-          case 0x40D808A0: LCDML.BT_quit();  break;
+          case 0xBB0ED9E1: LCDML.BT_enter(); break;
+          case 0xC20370A1: LCDML.BT_up();    break;
+          case 0x81930A09: LCDML.BT_down();  break;
+          case 0x983AB4C1: LCDML.BT_left();  break;
+          case 0x21035431: LCDML.BT_right(); break;
+          case 0xABBE1086: LCDML.BT_quit();  break;
           default: break;
       }
       irrecv.resume(); // Receive the next value

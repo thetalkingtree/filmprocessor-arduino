@@ -1,4 +1,4 @@
-// *********************************************************************
+// *********************************************************************elsius
 // includes
 // *********************************************************************
 
@@ -13,7 +13,7 @@
 //*********************************************************************
 //Temp sensor settings
 //*********************************************************************
-#define aref_voltage 1.0518 // we tie 1.1V to ARef and measure it with a multimeter!
+#define aref_voltage 1.0738 // we tie 1.1V to ARef and measure it with a multimeter!
 
 
 //TMP36 Pin Variables
@@ -85,7 +85,7 @@ LCDML_add(6, LCDML_0_1_1, 5, "Back", mFunc_back);
 
 LCDML_add(7, LCDML_0_1, 2, "Developer", NULL); 
 LCDML_addAdvanced(8, LCDML_0_1_2, 1, NULL, "Fomadon P (D76)", mFunc_param_developer,1, _LCDML_TYPE_default);   
-LCDML_addAdvanced(9, LCDML_0_1_2, 2, NULL, "Fomadon xcel(XTol)", mFunc_param_developer, 2, _LCDML_TYPE_default); 
+LCDML_addAdvanced(9, LCDML_0_1_2, 2, NULL, "Fomadon LQN", mFunc_param_developer, 2, _LCDML_TYPE_default); 
 LCDML_addAdvanced(10, LCDML_0_1_2, 3, NULL,"Fomadon R09", mFunc_param_developer, 3,_LCDML_TYPE_default); 
 LCDML_add(11, LCDML_0_1_2, 4, "Back", mFunc_back); 
 
@@ -188,4 +188,5 @@ void setup()
 void loop()
 {
   LCDML.loop(); 
+  //steppper.run
 }

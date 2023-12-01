@@ -1,5 +1,7 @@
 #include "FomadonDeveloper.h"
 #include <AccelStepper.h>
+#include "LCDMenuLib2.h"
+#include "LCDMenuLib2_typedef.h"
 
 long g_func_timer_info = 0;  // time counter (global variable)
 unsigned long g_timer_1 = 0; // timer variable (global variable)
@@ -66,26 +68,27 @@ void mFunc_param_developer(uint8_t param)
 
   if (LCDML.FUNC_loop()) // ****** LOOP *********
   {
-    // For example
-    switch (param)
-    {
-    case 1:
-      gFilmDeveloper = FomadonDeveloper::Create(param);
-      break;
+    // // For example
+    // switch (param)
+    // {
+    // case 1:
+    //   gFilmDeveloper = FomadonDeveloper::Create(param);
+    //   break;
 
-    case 2:
-      Serial.println(F("Fomadon excel (XTol)"));
-      break;
+    // case 2:
+    //    gFilmDeveloper = FomadonDeveloper::Create(param);
+    //   break;
 
-    case 3:
-      Serial.println(F("Fomadon R09"));
-      break;
+    // case 3:
+    //   Serial.println(F("Fomadon R09"));
+    //   break;
 
-    default:
-      // do nothing
-      break;
-    }
-
+    // default:
+    //   // do nothing
+    //   break;
+    // }
+    //Factory pattern - use the dev and film combo
+    gFilmDeveloper = FomadonDeveloper::Create(param);
     gFilmDeveloper->setFilm(&gFilm);
     LCDML.OTHER_setCursorToID(12);
   }
@@ -184,7 +187,7 @@ void mFunc_confirm_dev_setup(uint8_t param)
   }
 
   if (LCDML.FUNC_close()) // ****** STABLE END *********
-  {
+  { 
   }
 }
 
@@ -401,27 +404,28 @@ void printTimeFromSec(int allSeconds, int lcdCol, int lcdRow)
 
 float checkTemperature()
 {
-  const byte numReadings = 32; // number of readings for smoothing (max 64)
+  const byte numReadings = 64; // number of readings for smoothing (max 64)
   int readings[numReadings]; // readings from the analogue input
   byte index = 0; // index of the current reading
   unsigned int total = 0; // running total
-
+  
+  int ghostCharge = analogRead(tempPin); // one unused reading to clear ghost charge
+  
   for (index = 0; index < numReadings; index++) { // fill the array for faster startup
     readings[index] = analogRead(tempPin);
     total = total + readings[index];
   }
 
   index = 0; // reset
-
   total = total - readings[index]; // subtract the last reading
-  readings[index] = analogRead(tempPin); // one unused reading to clear ghost charge
+  
   readings[index] = analogRead(tempPin); // read from the sensor
   total = total + readings[index]; // add the reading to the total
   index = index + 1; // advance to the next position in the array
   if (index >= numReadings) // if we're at the end of the array
     index = 0; // wrap around to the beginning
 
-  tempC = total * aref_voltage * 0.1 / numReadings - 50.0; // value to celcius conversion for TMP36
+  tempC = total * aref_voltage * 0.1 / numReadings - 50; // value to celcius conversion for TMP36
   
   // print to serial monitor
   Serial.println("Raw average = ");
@@ -432,7 +436,7 @@ float checkTemperature()
   else {
     Serial.println ("   The temperature is  ");
     Serial.print(tempC, 2);
-    Serial.print(" Celcius  ");   
+    Serial.print(" Celsius  ");   
   }
   
   return tempC;
@@ -496,16 +500,16 @@ void printDevelopTemperature()
     lcd.setCursor(13, 2);
     lcd.print(gFilmDeveloper->getTemperature());    
     lcd.setCursor(18, 2);
-    lcd.print(F("C"));
+    lcd.print(F(" C"));
 }
 
 void printActualTemperature()
 {
   lcd.setCursor(0, 3);
-   lcd.print(F("Actual temp.:"));
+   lcd.print(F("Actual temp. :"));
     lcd.setCursor(13, 3);
     lcd.print(checkTemperature());
     lcd.setCursor(18, 3);
-    lcd.print(F("C"));
+    lcd.print(F(" C"));
 
 }
