@@ -160,7 +160,7 @@ void setup()
   Serial.println(F("Semi auto film processor")); 
   
   stepper.setMaxSpeed(500);
-  stepper.setAcceleration(480);
+  stepper.setAcceleration(500);
   stepper.moveTo(1200);
   stepper.setSpeed(500);
 

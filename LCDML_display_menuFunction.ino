@@ -446,7 +446,7 @@ void stopAgitate()
 {
   stepper.stop();
   stepper.setCurrentPosition(1200);
-  stepper.setAcceleration(480);
+  stepper.setAcceleration(500);
   stepper.setMaxSpeed(500);
   stepper.setSpeed(500);
   g_isAgitationStopped = true;
